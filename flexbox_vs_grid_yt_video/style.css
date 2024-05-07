@@ -1,0 +1,38 @@
+.flex-container {
+  --padding: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.flex-container > * {
+  flex-grow: 1;
+  width: calc(33% - var(--padding) * 2);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/*other*/
+body {
+  /* margin: 0; */
+  box-sizing: border-box;
+}
+.flex-container > *,
+.grid-container > * {
+  border: 1px solid #444;
+  padding: var(--padding);
+}
+
+h1 {
+  color: #f70;
+  text-shadow: 2px 2px 2px #777;
+  font-weight: 900;
+  font-family: Helvetica;
+  font-size: 3rem;
+}
+
+h2 {
+  margin: 1em 0 0;
+}

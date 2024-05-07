@@ -1,0 +1,51 @@
+<!--  -->
+<!doctype html>
+<html lang="EN">
+  <head>
+    <title>desktop first, 2mq, srcset</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-wrap">
+      <header>Cool Babies Website</header>
+
+      <main>
+        <h1>Breaking News: Anything on Babies Heads is Cute</h1>
+
+        <p>Science has proven it.</p>
+
+        <img
+          alt=""
+          width="2000"
+          height="1134"
+          src="https://res.cloudinary.com/css-tricks/image/upload/c_scale,f_auto,q_auto,w_600/v1587561606/baby_p7ngmm.jpg"
+          srcset="
+            https://res.cloudinary.com/css-tricks/image/upload/c_scale,f_auto,q_auto,w_320/v1587561606/baby_p7ngmm.jpg   320w,
+            https://res.cloudinary.com/css-tricks/image/upload/c_scale,f_auto,q_auto,w_600/v1587561606/baby_p7ngmm.jpg   600w,
+            https://res.cloudinary.com/css-tricks/image/upload/c_scale,f_auto,q_auto,w_1200/v1587561606/baby_p7ngmm.jpg 1200w,
+            https://res.cloudinary.com/css-tricks/image/upload/c_scale,f_auto,q_auto,w_2000/v1587561606/baby_p7ngmm.jpg 2000w
+          "
+          sizes="
+                 (min-width: 2420px) 2000px, 
+                 (min-width: 720px) calc(94.76vw - 274px), 
+                 (min-width: 520px) calc(100vw - 96px), 
+                 calc(100vw - 32px)
+            "
+        />
+        <!-- Above sizes="" is correct but unmaintainable by hand! -->
+        <!-- https://github.com/ausi/respimagelint was used to calculate it! -->
+      </main>
+
+      <aside>
+        <div class="sidebar-module">item1</div>
+        <div class="sidebar-module">item2</div>
+        <div class="sidebar-module">item3</div>
+        <div class="sidebar-module">item4</div>
+      </aside>
+
+      <footer>copyright babies</footer>
+    </div>
+  </body>
+</html>

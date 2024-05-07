@@ -1,0 +1,26 @@
+body {
+  --color: aquamarine;
+}
+.fancy-button {
+  --_color: var(--color, black);
+  border: 0.1em solid var(--_color);
+  background-color: transparent;
+  color: var(--_color);
+}
+
+.fancy-button:hover {
+  background-color: var(--_color);
+  color: white;
+}
+
+/*misc*/
+.wrapper {
+  margin: auto;
+  width: max-content;
+}
+.fancy-button {
+  font: 1.7rem Arial;
+  padding: 0.75em;
+  cursor: pointer;
+  border-radius: 7px;
+}

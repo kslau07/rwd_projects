@@ -1,0 +1,26 @@
+.main-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows:
+    auto
+    1fr
+    auto;
+}
+
+/*misc style*/
+body {
+  background-color: #222;
+  color: white;
+  margin: 0;
+}
+header,
+footer {
+  padding: 1em;
+  background-color: #05f;
+  color: gainsboro;
+  text-align: center;
+}
+main {
+  text-align: center;
+}

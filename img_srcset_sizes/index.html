@@ -1,0 +1,40 @@
+<!-- Unused, but 1x, 2x, 3x works! -->
+<!-- img
+      srcset="
+        mypicture-500w.jpg,
+        mypicture-1000w.jpg    2x,
+        mypicture-original.jpg 3x
+      "
+      src="mypicture-500w.jpg"
+      alt="Photo of a landscape with grass and mountains."
+      / -->
+
+<!doctype html>
+<html lang="EN">
+  <head>
+    <title>img + srcsets + sizes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <img
+      srcset="
+        mypicture-500w.jpg      500w,
+        mypicture-1000w.jpg    1000w,
+        mypicture-original.jpg 1500w
+        "
+      <!-- Works! In English: Keep using our 500w low-res photo until screen width reaches 600px -->
+      <!-- Then at 601px, switch over to the 1000w photo. Use the medium-res photo til width <= 1100 -->
+      <!-- Then at 1101px, switch over to the 1500w photo (original size) -->
+      <!-- Essentially, we're allowing a photo to be enlarged and look a bit blurry before switching
+           to the next higher-res version. -->
+      sizes="(max-width: 600px) 500px,
+             (max-width: 1100px) 1000px,
+             1500px"
+      src="mypicture-500w.jpg"
+      alt="Landscape with grass and mountains."
+    />
+  </body>
+</html>
+

@@ -1,0 +1,113 @@
+<!doctype html>
+<!-- 1 pixel becomes 4 pixels on a 2x device (a device with double pixel density)  -->
+<!-- 1 pixel becomes 9 pixels on a 3x device -->
+<html lang="EN">
+  <head>
+    <title>img srcset sizes KP Youtube Video</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <img
+      src="polarbear-500w.jpg"
+      srcset="
+        polarbear-500w.jpg   500w,
+        polarbear-1000w.jpg 1000w,
+        polarbear-1920w.jpg 1920w
+        "
+
+      sizes="(min-width: 760px) 50vw, 100vw"
+
+      alt=""
+      />
+    <!-- sizes="(max-width: 600px) 100vw, 600px"     -->
+    <!-- Above: Not related to media-query located in our css  -->
+    <!-- Just an experiment. -->
+    <!-- max-width:600px 100vw means if we're below 600w use 100vw to calculate image width -->
+    <!-- 600px means if we're at or above w:600px, keep image size at whatever works for 600w! -->
+    <!-- This means it'll lock width at 600w and will use the 1000w image, but will never use -->
+    <!-- the 1920w image! -->
+
+    <!-- sizes="(max-width: 700px) 100vw, 700px" -->
+    <!-- How does above relate to DPR? -->
+    <!-- At 2.0 DPR we stay at the 500w image until w:353 -->
+    <!-- 353 * 2 = 706 -->
+    <!-- At w:354 we switch over to the 1000w image -->
+    <!-- The browser is taking into account its higher res (retina) display -->
+    <!-- 353 is approx 706 hardware pixels -->
+    <!-- The browser figures at 706 hwpx, a 500w image starts to look bad,  -->
+    <!-- and it will opt to load the 1000w. This "breakpoint" holds true -->
+    <!-- even if we change max-width to 600px. This is hard-coded in the browser! -->
+    <!-- This means there is a DPR algorithm working in the background which  -->
+    <!-- does not correspond 1:1 with any calculation we have been using so far. -->
+
+    <!-- 2.0 DPR seems to use this formula: -->
+    <!-- screen-width-css-px * 1.4 = lowest res allowed -->
+    <!-- 353csspx * 1.4 = 494w (highest csspx that still uses 500w image) -->
+    <!--   ^708hwpx -->
+    <!-- 359ccs * 1.4 = 502w (begin using 1000w image) -->
+    <!--   ^718hwpx -->
+
+    <!-- 3.0 DPR seems to use this formula: -->
+    <!-- 235csspx * 2.13 = ~499 (highest csspx that still uses 500w image)  -->
+    <!--   ^705hwpx -->
+    <!-- 236csspx * 2.13 = ~502 (begin using 1000w)  -->
+    <!--   ^708hwpx -->
+    
+    <!-- sizes="(min-width: 760px) 50vw, 100vw" -->
+    <!-- Above: We write our CSS media query, which is min-width:760px  -->
+    <!-- Then we put how big our image is at that breakpoint, which is 50vw -->
+    <!-- These instructions allow the browser to make good decisions based  -->
+    <!-- user's screen size and what images are avail. -->
+
+    <!-- When to use media query in sizes="" ??? -->
+    <!-- I think a good time to use media queries is when our layout changes -->
+    <!-- the width of an image. If our mobile-first layout adds a 2nd column -->
+    <!-- at 760px and splits content half and half, it means our image size will -->
+    <!-- also be chopped in half. So we can add this media query: -->
+    <!-- (min-width: 760px) 50vw, 100vw -->
+    <!-- We already explained this above, but what this "sizes" media-query does is -->
+    <!-- it tells our browser that at 760px or higher, our image is chopped in half. -->
+    <!-- The browser will then allow a 50% "drop in quality" for images -->
+    <!-- However, at 760px or lower, our image is normal-sized (100vw). -->
+    <!-- NOTE: this does not factor in padding, but is close enough! -->
+
+    <p>
+      <span style="font-weight: 900; color: maroon;" id="data-image-width"></span></br>
+      <span style="font-weight: 900; color: maroon;" id="data-screen-width"></span> : Screen Width (CSS pixels)</br>
+      <span style="font-weight: 900;color:navy;" id="data-ratio"></span> : Device Pixel Ratio (DPR)</br>
+      <span style="font-weight: 900;color:purple;" id="data-hwpx"></span> : Actual Hardware Pixels </br>
+      
+
+      Tortor, at auctor urna nunc id cursus metus aliquam eleifend mi in nulla
+      posuere. In eu mi bibendum neque egestas congue quisque egestas diam in
+      arcu cursus euismod quis viverra nibh cras pulvinar! Tincidunt dui ut
+      ornare lectus sit amet est placerat in! Sed id semper risus in hendrerit
+      gravida rutrum quisque non tellus orci, ac! Dictum varius duis at
+      consectetur lorem donec massa sapien, faucibus et molestie ac, feugiat sed
+      lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt
+      ornare massa, eget?
+    </p>
+    <script>
+      window.addEventListener("resize", updateText);
+      updateText();
+
+      function updateText() {
+
+        // does not work
+        // const img = document.querySelector("img")
+        // const dataImageWidth = document.querySelector("#data-image-width");
+
+        const dataScreenWidth = document.querySelector("#data-screen-width");
+        const dataRatio = document.querySelector("#data-ratio");
+        const dataHWPX = document.querySelector("#data-hwpx");
+
+        // dataImageWidth.textContent = `${img.naturalWidth}` //does not work
+        dataScreenWidth.textContent = `${window.innerWidth}`;
+        dataRatio.textContent = `${window.devicePixelRatio}`;
+        dataHWPX.textContent = `${window.innerWidth * window.devicePixelRatio}`;        
+      }
+    </script>
+  </body>
+</html>

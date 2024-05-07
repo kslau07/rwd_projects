@@ -1,0 +1,67 @@
+h1 {
+  font-size: 4rem;
+  color: orangered;
+  text-shadow: 3px 3px #558abb;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul {
+  border: 3px solid orange;
+}
+.nav-list li {
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */
+  border: 3px solid palegreen;
+
+  /* Looks like default is max-content */
+  /* width: min-content; */
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 800px;
+  border: 10px solid firebrick;
+}
+.cards > * {
+  background-color: palegreen;
+  padding: 1rem;
+
+  /* Equalize col widths */
+  /* flex: 1; */
+  /* Equal to fxg:1; fxsh:1; fxb:0; */
+  /* fxb:0 means flex-basis of zero for all items, aka items initialized with eq width */
+
+  flex-basis: 100%; /*same as width:100;*/
+  /* width:100; */
+
+  /* Easily see how long a card is if no line-breaks */
+  /* flex-shrink: 0; */
+
+  /*default value*/
+  /* flex-basis: auto; */
+}
+
+@media (min-width: 750px) {
+  .cards {
+    flex-direction: row;
+  }
+}
+
+/* misc style */
+h2 {
+  margin-block: 0.33em;
+}
+body {
+  letter-spacing: 0.015rem;
+}

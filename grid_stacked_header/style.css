@@ -1,0 +1,61 @@
+.primary-header {
+  display: grid;
+  place-items: center;
+
+  /*in video we replace gdta with grid line numbers*/
+  /* grid-template-areas: "stack"; */
+}
+.primary-header > * {
+  /* replace with grid line numbers */
+  /* grid-area: stack; */
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+/*Now we can change our layout more easily with a mq*/
+@media (min-width: 50em) {
+  .primary-header {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .primary-header__image {
+    grid-column: 1;
+  }
+  .primary-header__title {
+    grid-column: 2;
+  }
+}
+
+.main-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows:
+    auto
+    1fr
+    auto;
+}
+
+/*misc style*/
+body {
+  background-color: #222;
+  color: white;
+  margin: 0;
+}
+header,
+footer {
+  background-color: #05f;
+  text-align: center;
+}
+footer {
+  padding-block: 1em;
+}
+
+.primary-header__title {
+  color: #ccc;
+}
+main {
+  text-align: center;
+}
+img {
+  display: block;
+  max-width: 100%;
+}

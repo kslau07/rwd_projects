@@ -1,0 +1,12 @@
+@media (min-width: 760px) {
+  /* At 760px our grid layout kicks in and our image only takes 50% of the width */
+  /* That means we can use a lower-res image. Our markup hints to browser to calculate using 50vw at this breakpoint. */
+  body {
+    display: grid;
+    grid: auto / repeat(2, 1fr);
+    gap: 2em;
+  }
+}
+img {
+  width: 100%;
+}
