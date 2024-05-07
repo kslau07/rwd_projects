@@ -16,6 +16,6 @@ video {
 }
 
 .wrapper {
-  width: min(70ch, 100% - 4rem);
+  width: min(70ch, 100% - 4rem); /* KP added "padding" here */
   margin-inline: auto;
 }
